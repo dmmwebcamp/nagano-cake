@@ -1,0 +1,22 @@
+ja:
+  enums:
+    order:
+      status:
+            waiting_for_payment: "入金待ち"
+            payment_is_confirmed: "入金確認"
+            under_production: "製作中"
+            preparing_for_shipping: "発送準備中"
+            already_shipped: "発送済み"
+            
+            
+            # 日本語化のやり方↓
+            # https://qiita.com/floatbottom/items/14ce2ceeab857a1f0d43
+            # = f.select  :status, Product.statuses.keys.map {|k| [I18n.t("enums.product.status.#{k}"), k]}
+            # https://qiita.com/japwork/items/2009de397519ca36a0b7
+            
+    order_details:
+      product_status:
+            unable_to_produce: "着手不可"
+            waiting_for_production: "製作待ち"
+            under_production: "製作中"
+            completed_production: "製作完了"
