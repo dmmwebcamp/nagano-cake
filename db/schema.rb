@@ -47,7 +47,7 @@ ActiveRecord::Schema.define(version: 2021_06_17_033119) do
     t.string "postal_code"
     t.string "address"
     t.string "phone_number"
-    t.boolean "is_leaved"
+    t.boolean "is_leaved", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_customers_on_email", unique: true
@@ -64,7 +64,7 @@ ActiveRecord::Schema.define(version: 2021_06_17_033119) do
   end
 
   create_table "genres", force: :cascade do |t|
-    t.string "name"
+    t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
