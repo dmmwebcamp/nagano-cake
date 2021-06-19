@@ -1,14 +1,22 @@
 Rails.application.routes.draw do
   
-  devise_for :customers
-  devise_for :admins
+ devise_for :admins, controllers: {
+  sessions:      'admin/sessions',
+  passwords:     'admin/passwords',
+  registrations: 'admin/registrations'
+}
+devise_for :customers, controllers: {
+  sessions:      'public/sessions',
+  passwords:     'public/passwords',
+  registrations: 'public/registrations'
+}
   
   
   namespace :admin do
     get'top' => 'homes#top'
     resources :customers
     resources :orders
-    resources :genres
+    resources :genres 
     resources :products
   end
   

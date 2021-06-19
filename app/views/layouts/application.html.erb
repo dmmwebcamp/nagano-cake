@@ -8,6 +8,15 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <script src="https://kit.fontawesome.com/eb0980de4d.js" crossorigin="anonymous"></script>
+    
+    <%= link_to  new_customer_session_path do%>
+       <i>ログイン</i>
+    <% end %>
+    
+     <%= link_to destroy_customer_session_path, method: :delete do %>
+      <i>ログアウト</i>
+     <% end %>
+    
   </head>
 
   <body>
