@@ -16,7 +16,7 @@ devise_for :customers, controllers: {
     get'top' => 'homes#top'
     resources :customers
     resources :orders
-    resources :genres
+    resources :genres 
     resources :products
   end
   
