@@ -1,6 +1,6 @@
 <h1>商品新規登録</h1>
 
-<%= form_with model: @product, local:true do |f| %>
+<%= form_with model: @product, url: admin_products_path(@product.id), method: :post, local:true do |f| %>
 
     <h3>商品画像</h3>
     <%= f.attachment_field :image %>
@@ -13,7 +13,6 @@
     <h3>税抜価格</h3>
     <%= f.text_field :tax_excluding_price %>
     <h3>販売ステータス</h3>
-     <%= f.label :is_saled %>
      <div>
       <%= f.radio_button :is_saled, true %>
       <%= f.label :is_saled, '販売中', value: true %>
