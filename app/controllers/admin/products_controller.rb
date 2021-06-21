@@ -12,9 +12,11 @@ class Admin::ProductsController < Admin::Base
     def create
         @product = Product.new(product_params)
         if  @product.save
-            redirect_to redirect_back(fallback_location: root_path)
+
+            redirect_to admin_product_path(@product.id)
         else
-           redirect_back(fallback_location: root_path)
+           render :new
+
         end
     end
 
@@ -29,7 +31,9 @@ class Admin::ProductsController < Admin::Base
     def update
         @product = Product.find(params[:id])
         if  @product.update(product_params)
-            redirect_to redirect_back(fallback_location: root_path)
+
+            redirect_to admin_product_path(@product.id)
+
         else
             render :edit
         end
@@ -38,7 +42,9 @@ class Admin::ProductsController < Admin::Base
 
  private
     def product_params
-    params.require(:product).permit(:image, :name, :description)
+
+    params.require(:product).permit(:image, :name, :description, :tax_excluding_price, :genre_id, :is_saled)  
+
     end
 
 
