@@ -1,5 +1,5 @@
-class Admin::OrdersController < ApplicationController
-    
+class Admin::OrdersController < Admin::Base
+
   def show
     @order = Order.find(params[:id])
     @orders = Order.all
@@ -26,5 +26,5 @@ class Admin::OrdersController < ApplicationController
   def order_status_params
     params.require(:order).permit(:order_status)
   end
-  
+
 end

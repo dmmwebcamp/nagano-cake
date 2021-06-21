@@ -1,2 +1,38 @@
-こんにちは！
-長野ケーキへようこそ！！
+<div class="container">
+  <div class="row">
+    <div class="mx-auto">
+      <div class="top">
+        <% if customer_signed_in? %>
+          <div class="product-image-box"></div>
+        <% else %>
+          <div class="product-image-box">
+            <p class="welcome">
+              ようこそ、ながのCAKEへ！<br>
+              このサイトは、ケーキ販売のECサイトになります。<br>
+              会員でない⽅も商品の閲覧はできますが、<br>
+              購⼊には会員登録が必要になります。
+            </p>
+          </div>
+        <% end %>
+        <h3>
+          <strong>新着商品</strong>
+        </h3>
+        <div class="flame">
+          <div class="image-box"></div>
+          <div class="image-box"></div>
+          <div class="image-box"></div>
+          <!--本来のリダイレクト先は商品詳細だが、エラーが出るため一覧に遷移するようにしています。-->
+          <%= link_to products_path, class:"color: #000;" do %>
+            <h6><strong>商品名</strong><strong>¥0,000</strong></h6>
+          <% end %>
+        </div>
+        <div class="flame">
+          <h6><strong>商品名</strong><strong>¥0,000</strong></h6>
+          <h6><strong>商品名</strong><strong>¥0,000</strong></h6>
+          <h6><strong>商品名</strong><strong>¥0,000</strong></h6>
+        </div>
+        <%= link_to "全ての商品を見る＞", products_path %>
+      </div>
+    </div>
+  </div>
+</div>
