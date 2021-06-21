@@ -63,3 +63,6 @@ gem "refile-mini_magick"
 
 gem 'byebug'
 gem 'devise-i18n'
+
+
+gem 'pry-rails'
