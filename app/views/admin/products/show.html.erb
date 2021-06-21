@@ -1,6 +1,5 @@
 商品詳細
 
-
 <%= attachment_image_tag @product, :image, :fill, 60, 60, fallback: "no_image.jpg"%>
 <h3>商品名</h3>
 <%= @product.name %>
@@ -13,7 +12,7 @@
 (<%= @product.tax_excluding_price.to_s(:delimited) %>）円
 <h3>販売ステータス</h3>
 <% if @product.is_saled == false %>
-<p>売り切れ</p>
+￥>
 <% else %>
 <p>販売中</p>
 <% end %>
