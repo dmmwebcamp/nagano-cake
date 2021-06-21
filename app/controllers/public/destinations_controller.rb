@@ -1,4 +1,4 @@
-class Public::DestinationsController < ApplicationController
+class Public::DestinationsController < Public::Base
 
    def index
    end

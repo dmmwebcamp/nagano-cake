@@ -59,7 +59,7 @@ class Admin::RegistrationsController < Devise::RegistrationsController
   # def after_inactive_sign_up_path_for(resource)
   #   super(resource)
   # end
-  
+
   def configure_sign_up_params
     devise_parameter_sanitizer.permit(:sign_up, keys: [:last_name, :first_name, :kana_last_name, :kana_first_name, :postal_code, :address, :phone_number])
   end
@@ -72,13 +72,23 @@ class Admin::RegistrationsController < Devise::RegistrationsController
   def update_resource(resource, params)
     resource.update_without_password(params)
   end
-  
+
   def after_update_path_for(resource)
     customers_path
   end
 
   # The path used after sign up.
   def after_sign_up_path_for(resource)
-    customers_path
+    admin_top_path
+  end
+
+  layout :layout_by_resource
+
+  def layout_by_resource
+    if devise_controller?
+      "admin"
+    else
+      "application"
+    end
   end
 end

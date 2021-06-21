@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  
+
  devise_for :admins, controllers: {
   sessions:      'admin/sessions',
   passwords:     'admin/passwords',
@@ -10,22 +10,22 @@ devise_for :customers, controllers: {
   passwords:     'public/passwords',
   registrations: 'public/registrations'
 }
-  
-  
+
+
   namespace :admin do
     get'top' => 'homes#top'
     resources :customers
     resources :orders
-    resources :genres 
+    resources :genres
     resources :products
   end
-  
+
   scope module: :public do
     root to: 'homes#top'
     get 'home/about' => 'homes#about'
     resources :customers
       get 'customers/leave' => 'customers#leave'
-      patch 'customers/withdraw' => 'customers#withdraw' 
+      patch 'customers/withdraw' => 'customers#withdraw'
     resources :orders
       post 'orders/confirm' => 'orders#confirm'
       get 'orders/thanks' => 'orders#thanks'
@@ -34,5 +34,5 @@ devise_for :customers, controllers: {
     resources :products
     resources :destinations
   end
-  
+
 end
