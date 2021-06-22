@@ -1,12 +1,16 @@
 class OrderDetail < ApplicationRecord
     
-    belongs_to :product
-    belongs_to :order
-    
-    enum product_status:{
-    unable_to_produce:              0, #着手不可
-    waiting_for_production:         1, #製作待ち
-    under_production:               2, #製作中
-    completed_production:           3, #製作完了
-    }
+  belongs_to :product
+  belongs_to :order
+
+  validates :after_price, presence: true
+  validates :qty, presence: true, length: {maximum: 100}
+
+  enum made_status: {着手不可: 0, 製作待ち: 1, 製作中: 2, 製作完了: 3}
+
+  #小計
+  def subtotal
+    tax_including_price * quantity
+  end
 end
+

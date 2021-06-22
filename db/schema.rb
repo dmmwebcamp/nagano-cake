@@ -56,7 +56,7 @@ ActiveRecord::Schema.define(version: 2021_06_17_033119) do
 
   create_table "destinations", force: :cascade do |t|
     t.integer "customer_id", null: false
-    t.string "pastal_code", null: false
+    t.string "postal_code", null: false
     t.string "address", null: false
     t.string "recipient", null: false
     t.datetime "created_at", null: false
@@ -83,7 +83,7 @@ ActiveRecord::Schema.define(version: 2021_06_17_033119) do
     t.integer "customer_id", null: false
     t.integer "total_price", null: false
     t.integer "payment_option", null: false
-    t.integer "shipping_fee", null: false
+    t.integer "shipping_fee", default: 800, null: false
     t.integer "status", default: 0, null: false
     t.string "postal_code", null: false
     t.text "address", null: false

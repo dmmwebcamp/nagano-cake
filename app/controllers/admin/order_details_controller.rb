@@ -1,31 +1,26 @@
 class Admin::OrderDetailsController < Admin::Base
     
+  before_action :authenticate_admin!
+
   def update
-    @order = Order.find(params[:id])
-    @order_detail = OrderDetail.find(params[:order_detail][:order_detail_id])
-    if @order_detail.update(order_detail_status_params)
-      if @order.order_details.pluck(:product_status).include?("製作中")
-         @order.order_status = 2
-         @order.save
-      elsif
-        @order.order_details.pluck(:product_status).all?{|status|status == "製作完了"}
-        @order.order_status = 3
-        @order.save
+    @order_product = OrderProduct.find(params[:id])
+    @order = @order_product.order  #注文ステータスを更新するため、ordersテーブル呼び出し
+    @order_product.update(order_product_params)
+
+      #製作ステータスの状態によって条件分岐
+
+      if @order_product.made_status == "製作中"
+        @order.update(order_status: "製作中")  #もし製作ステータスが1つでも製作中であれば、注文ステータスを製作中に更新
+      elsif  @order.order_products.count == @order.order_products.where(made_status: "製作完了").count
+        @order.update(order_status: "発送準備中")  #注文数と製作完了数が一致したとき、注文ステータスを発送準備中に更新
       end
-    flash[:success] = "制作ステータスを変更しました。"
-    redirect_to admin_order_path(@order)
-    
-    else
-      redirect_back(fallback_location: root_path)
-    end
+
+    redirect_to admin_order_path(@order.id)
   end
 
   private
-
-  def order_detail_status_params
-    params.require(:order_detail).permit(:product_status)
-
+  def order_product_params
+    params.require(:order_product).permit(:product_status)
   end
-
     
 end
