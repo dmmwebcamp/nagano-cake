@@ -2,13 +2,14 @@ class Admin::OrdersController < Admin::Base
 
 before_action :authenticate_admin!
 
-  def index
+  def top
     @orders = Order.page(params[:page]).per(10).reverse_order
   end
 
   def show
     @order = Order.find(params[:id])
     @order_details = @order.order_details
+    
   end
 
   def update
@@ -19,10 +20,10 @@ before_action :authenticate_admin!
       #入金待ちのときは製作ステータスに着手不可が入る
       #入金確認のとき製作ステータスを全て”製作待ち”に更新
 
-      if @order.order_status == "入金待ち"
-        @order_details.update_all(made_status: "着手不可")
-      elsif @order.order_status == "入金確認"
-        @order_details.update_all(made_status: "製作待ち")
+      if @order.status == "入金待ち"
+        @order_details.update_all(product_status: "着手不可")
+      elsif @order.status == "入金確認"
+        @order_details.update_all(product_status: "製作待ち")
       end
 
     redirect_to admin_order_path(@order.id)
