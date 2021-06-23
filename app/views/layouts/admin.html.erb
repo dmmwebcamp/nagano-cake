@@ -21,28 +21,31 @@
 
   <body>
     <header>
-      <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #004d24;">
+      <nav class="navbar navbar-expand-lg navbar-light" style="background-color: rgba(0, 164, 141,.8);">
         <div class="container-fluid">
-          <span class="navbar-brand mb-0 h1 border border-dark">LOGO</span>
+          <div class="admin-header">
+           <i class="fas fa-birthday-cake"></i>nagano-cake</span>
+          </div>
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ml-auto">
-              <% if admin_signed_in? %>
-                <li class="btn-group mr-5" role="group" aria-label="First group">
-                  <%= link_to "商品一覧", admin_products_path, class:"btn btn-light" %>
-                </li>
-                <li class="btn-group mr-5" role="group" aria-label="Second group">
-                  <%= link_to "会員一覧",  admin_customers_path, class:"btn btn-light" %>
-                </li>
-                <li class="btn-group mr-5" role="group" aria-label="Third group">
-                  <%= link_to "注文履歴一覧", admin_top_path, class:"btn btn-light" %>
-                </li>
-                <li class="btn-group mr-5" role="group" aria-label="Fourth group">
-                  <%= link_to "ジャンル一覧", admin_genres_path, class:"btn btn-light" %>
-                </li>
-                <li class="btn-group mr-5" role="group" aria-label="Fifth group">
-                  <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class:"btn btn-light" %>
-                </li>
-              <% else %>
+              <div class="header-btn">
+                <% if admin_signed_in? %>
+                  <li class="btn-group mr-5" role="group" aria-label="First group">
+                    <%= link_to "商品一覧", admin_products_path, class:"btn btn-light" %>
+                  </li>
+                  <li class="btn-group mr-5" role="group" aria-label="Second group">
+                    <%= link_to "会員一覧",  admin_customers_path, class:"btn btn-light" %>
+                  </li>
+                  <li class="btn-group mr-5" role="group" aria-label="Third group">
+                    <%= link_to "注文履歴一覧", admin_top_path, class:"btn btn-light" %>
+                  </li>
+                  <li class="btn-group mr-5" role="group" aria-label="Fourth group">
+                    <%= link_to "ジャンル一覧", admin_genres_path, class:"btn btn-light" %>
+                  </li>
+                  <li class="btn-group mr-5" role="group" aria-label="Fifth group">
+                    <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class:"btn btn-light" %>
+                  </li>
+                <% else %>
                 <li class="btn-group mr-5" role="group" aria-label="First group">
                   <%= link_to "About", home_about_path, class:"btn btn-light" %>
                 </li>
@@ -56,18 +59,21 @@
                   <%= link_to "ログイン", new_admin_session_path, class:"btn btn-light" %>
                 </li>
               <% end %>
+              </div>
             </ul>
           </div>
         </div>
       </nav>
     </header>
     <%= yield %>
-    <footer class="container-fluid mt-5 fixed-bottom py-1 bg-primary">
-      <div class="row">
-        <div class="mx-auto">
-          <p>nagano-cake</p>
+    <div class="admin-fotter">
+      <footer class="container-fluid mt-5 fixed-bottom py-1" style="background-color: rgba(0, 164, 141,.6);">
+        <div class="row">
+          <div class="mx-auto">
+            <p>©NaganoCake -2021-june-</p>
+          </div>
         </div>
-      </div>
-    </footer>
+      </footer>
+    </div>
   </body>
 </html>
