@@ -13,23 +13,22 @@
             <th class="table-active">氏名</th>
             <th class="table-active">メールアドレス</th>
             <th class="table-active">ステータス</th>
-            
+
           </tr>
         </thead>
         <tbody>
           <% @customers.each do |customer| %>
             <tr>
               <td class="align-middle"><%= customer.id %></td>
-              <td class="align-middle"><%= customer.last_name%></td>
+              <td class="align-middle"><%= link_to customer.customer_name, edit_admin_customer_path(customer.id) %></td>
               <td class="align-middle"><%= customer.email %></td>
               <td class="align-middle">
                 <% if customer.is_leaved == false %>
                   <p class="text-success font-weight-bold">有効</p>
-          
+
                 <% else %>
                   <p class="text-secondary">退会</p>
                 <% end %>
-            <td class="align-middle"><%= link_to "削除", customer_path(customer), class: "btn btn-danger", method: :delete, data: { confirm: '削除しますか？' } %></td>
               </td>
             </tr>
           <% end %>

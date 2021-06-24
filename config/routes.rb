@@ -24,15 +24,15 @@ devise_for :customers, controllers: {
   scope module: :public do
     root to: 'homes#top'
     get 'home/about' => 'homes#about'
+    get 'customers/leave' => 'customers#leave'
+    patch 'customers/withdraw' => 'customers#withdraw'
     resources :customers
-      get 'customers/leave' => 'customers#leave'
-      patch 'customers/withdraw' => 'customers#withdraw'
-   
-      post 'orders/confirm' => 'orders#confirm'
-      get 'orders/confirm' => 'orders#new'
-      get 'orders/thanks' => 'orders#thanks'
-      resources :orders ,except: [:edit, :destroy]
-    
+
+    post 'orders/confirm' => 'orders#confirm'
+    get 'orders/confirm' => 'orders#new'
+    get 'orders/thanks' => 'orders#thanks'
+    resources :orders ,except: [:edit, :destroy]
+    delete 'cart_products/destroy_all' => 'cart_products#destroy_all'
     resources :cart_products
     resources :products
     resources :destinations

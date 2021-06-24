@@ -1,0 +1,51 @@
+<div class="container">
+  <div class="row my-3">
+    <div class="col-sm-5 px-sm-0 offset-sm-1">
+      <h3><%= @customer.last_name %><%= @customer.first_name %>さんの会員詳細</h3>
+
+      <div class="pull-right">
+        <table class='table'>
+          <tr>
+            <th style="border:none;">会員ID</th>
+            <th style="border:none;"><%= @customer.id %></th>
+          </tr>
+          <tr>
+            <th style="border:none;">氏名</th>
+            <th style="border:none;"><%= @customer.last_name %><%= @customer.first_name %></th>
+          </tr>
+          <tr>
+            <th style="border:none;">フリガナ</th>
+            <th style="border:none;"><%= @customer.kana_last_name %><%= @customer.kana_first_name %></th>
+          </tr>
+          <tr>
+            <th style="border:none;">郵便番号</th>
+            <th style="border:none;"><%= @customer.postal_code %></th>
+          </tr>
+          <tr>
+            <th style="border:none;">住所</th>
+            <th style="border:none;"><%= @customer.address %></th>
+          </tr>
+          <tr>
+            <th style="border:none;">電話番号</th>
+            <th style="border:none;"><%= @customer.phone_number %></th>
+          </tr>
+          <tr>
+            <th style="border:none;">メールアドレス</th>
+            <th style="border:none;"><%= @customer.email %></th>
+          </tr>
+          <tr>
+            <th style="border:none;">会員ステータス</th>
+            <% if @customer.is_leaved == false %>
+            　<th style="border:none;">有効</th>
+            <% else %>
+              <th style="border:none;">退会</th>
+            <% end %>
+          </tr>
+
+          <td style="border:none;"><%= link_to '編集する', edit_admin_customer_path(@customer), class: "btn btn-sm btn-success" %></td>
+          <td style="border:none;"><%= link_to '注文履歴一覧を見る', edit_admin_customer_path(@customer), class: "btn btn-sm btn-primary" %></td>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
