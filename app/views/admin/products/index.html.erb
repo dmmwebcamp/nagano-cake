@@ -1,21 +1,32 @@
-商品一覧
-
-
-<% @products.each do |product| %>
-<h5>商品ID</h5>
-<%= product.id%>
-<h5>商品名</h5>
-<%= link_to product.name , admin_product_path(product.id) %>
-<h5>税抜価格</h5>
-<%= product.tax_excluding_price %>
-<h5>ジャンル</h5>
-<%= product.genre.name %>
-<h5>ステータス</h5>
-<% if product.is_saled == false %>
-<p>売り切れ</p>
-<% else %>
-<p>販売中</p>
-<% end %>
-
-
-<% end %>
+<div class="container">
+  <h3>商品一覧</h3>
+  <div class="row">
+    <table class="table table-bordered">
+        <thead>
+          <tr>
+          <th>商品ID</th>
+          <th>商品名</th>
+          <th>税抜価格</th>
+          <th>ジャンル</th>
+          <th>ステータス</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @products.each do |product| %>
+        <tr>
+          <td><%= product.id%></td>
+          <td><%= link_to product.name , admin_product_path(product.id), class:"border:solid 1px " %></td>
+          <td><%= product.tax_excluding_price %></td>
+          <td><%= product.genre.name %></td>
+          <td><% if product.is_saled == false %>
+                <p>売り切れ</p>
+              <% else %>
+                <p>販売中</p>
+              <% end %></td>
+          </tr>
+        </tbody>
+        <% end %>
+    </table>
+  </div>
+  <%= paginate @products %>
+</div>
