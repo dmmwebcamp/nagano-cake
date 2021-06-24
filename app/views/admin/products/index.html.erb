@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container mt-3">
   <h3>商品一覧</h3>
   <div class="row">
     <table class="table table-bordered">
@@ -16,7 +16,7 @@
         <tr>
           <td><%= product.id%></td>
           <td><%= link_to product.name , admin_product_path(product.id), class:"border:solid 1px " %></td>
-          <td><%= product.tax_excluding_price %></td>
+          <td><%= product.tax_excluding_price.to_s(:delimited) %></td>
           <td><%= product.genre.name %></td>
           <td><% if product.is_saled == false %>
                 <p>売り切れ</p>

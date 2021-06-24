@@ -1,11 +1,22 @@
-商品一覧（全 <%= @products.count %> 件） 
+<div class="container mt-3">
+ <div class="row">
+   <div class="col-sm-12">
+  <h3>商品一覧（全 <%= @products.count %> 件）</h3>
+   </div>
 
-<% @products.each do |product| %>
-<%= link_to product_path(product.id) do %>
-<%= attachment_image_tag product, :image, :fill, 60, 60, fallback: "no_image.jpg"%>
-<% end %>
-
-<%= link_to product.name , product_path(product.id) %>
-
-<%= product.tax_excluding_price %>
-<% end %>
+      <% @products.each do |product| %>
+      <div class="card border-light text-dark" style="width: 15rem; .border.border-top-0">
+          <%= link_to product_path(product.id) do %>
+          <%= attachment_image_tag product, :image, :fill, 180, 140, fallback: "no_image.jpg"%>
+          <% end %>
+          <%= link_to product.name , product_path(product.id) %>
+          ￥<%= product.tax_excluding_price.to_s(:delimited) %>
+      </div>
+      <% end %>
+ </div>
+  <div class="row">
+   <div class="col-md-8">
+      <%= paginate @products %>
+   </div>
+  </div>
+</div>
