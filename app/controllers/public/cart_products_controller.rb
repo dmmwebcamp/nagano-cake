@@ -4,8 +4,7 @@ def index
       @customer = current_customer
       @cart_products = CartProduct.all
       @numbers = (1..100).to_a
-      
-   end
+end
 
    def update
       @cart_product = CartProduct.find(params[:id])
