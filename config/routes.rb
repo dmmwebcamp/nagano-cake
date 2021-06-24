@@ -23,12 +23,12 @@ devise_for :customers, controllers: {
   scope module: :public do
     root to: 'homes#top'
     get 'home/about' => 'homes#about'
+    get 'customers/leave' => 'customers#leave'
+    patch 'customers/withdraw' => 'customers#withdraw'
     resources :customers
-      get 'customers/leave' => 'customers#leave'
-      patch 'customers/withdraw' => 'customers#withdraw'
+    post 'orders/confirm' => 'orders#confirm'
+    get 'orders/thanks' => 'orders#thanks'
     resources :orders
-      post 'orders/confirm' => 'orders#confirm'
-      get 'orders/thanks' => 'orders#thanks'
     delete 'cart_products/destroy_all' => 'cart_products#destroy_all'
     resources :cart_products
     resources :products
