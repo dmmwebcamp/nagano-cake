@@ -1,0 +1,9 @@
+
+
+<%= attachment_image_tag @product, :image, :fill, 60, 60, fallback: "no_image.jpg"%>
+
+<%= @product.name %>
+<%= @product.description %>
+
+￥<%= @product.add_tax_price.to_s(:delimited) %>（税込）
+
