@@ -32,10 +32,8 @@ devise_for :customers, controllers: {
       get 'orders/confirm' => 'orders#new'
       get 'orders/thanks' => 'orders#thanks'
       resources :orders ,except: [:edit, :destroy]
-      
-      
+    
     resources :cart_products
-      delete 'cart_products/destroy_all' => 'cart_products#destroy_all'
     resources :products
     resources :destinations
   end
