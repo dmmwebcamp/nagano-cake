@@ -29,8 +29,8 @@ devise_for :customers, controllers: {
     resources :orders
       post 'orders/confirm' => 'orders#confirm'
       get 'orders/thanks' => 'orders#thanks'
+    delete 'cart_products/destroy_all' => 'cart_products#destroy_all'
     resources :cart_products
-      delete 'cart_products/destroy_all' => 'cart_products#destroy_all'
     resources :products
     resources :destinations
   end
