@@ -1,6 +1,6 @@
 class Public::CartProductsController < Public::Base
-
-   def index
+  
+def index
       @customer = current_customer
       @cart_products = CartProduct.all
       @numbers = (1..100).to_a

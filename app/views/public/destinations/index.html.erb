@@ -1,0 +1,58 @@
+<div class="container mt-5 mb-5">
+  <div class="row shipping-new">
+    <div class="col-sm-10 px-sm-0 offset-sm-1">
+      <h2>配送先登録/一覧</h2>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-10 px-sm-0 mx-auto">
+      <%= form_with model: @destination, local: true do |f| %>
+      <table style= "line-height:2rem">
+        <tr>
+        <div class="form-group">
+          <th><%= f.label :"郵便番号(ハイフンなし)　　　" %></th>
+          <td><%= f.text_field :postal_code, placeholder:"0000000", id: "customer_postal_code" %></td>
+        </div>
+        </tr>
+        <tr>
+        <div class="form-group">
+          <th><%= f.label :"住所" %></th>
+          <td><%= f.text_field :address, placeholder:"住所を入力", :size => "50", id: "customer_address" %></td>
+        </div>
+        </tr>
+        <tr>
+        <div class="form-group">
+          <th><%= f.label :"宛名" %></th>
+          <td><%= f.text_field :recipient, placeholder:"名前を入力"%></td>
+        </div>
+        </tr>
+      </table>
+      <span><%= f.submit "新規登録", class:"btn btn-success" %></span>
+      <% end %>
+    </div>
+  </div>
+  <div class="row shipping-lists">
+    <div class="col-sm-10 px-sm-0 mt-3 mx-auto">
+      <table class="table table-bordered">
+        <thead class="table-active">
+          <tr>
+            <th>郵便番号</th>
+            <th>住所</th>
+            <th>宛先</th></th>
+            <th colspan="2"></th>
+          </tr>
+        </thead>
+        <tbody>
+        <% @destinations.each do |destination| %>
+          <tr>
+            <td><%= destination.postal_code %></td>
+            <td><%= destination.address %></td>
+            <td><%= destination.recipient %></td>
+            <td><%= link_to "編集する", edit_destination_path(destination), class:"btn btn-success" %> <%= link_to "削除する", destination, method: :delete, "data-confirm" => "本当に削除しますか？", class:"btn btn-danger" %></td>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
