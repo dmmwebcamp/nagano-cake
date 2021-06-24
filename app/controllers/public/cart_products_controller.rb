@@ -5,7 +5,9 @@ class Public::CartProductsController < Public::Base
       @cart_products = CartProduct.all
       @numbers = (1..100).to_a
 
+
    end
+
 
    def update
       @cart_product = CartProduct.find(params[:id])
