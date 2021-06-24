@@ -4,6 +4,7 @@ class Public::CartProductsController < Public::Base
       @customer = current_customer
       @cart_products = CartProduct.all
       @numbers = (1..100).to_a
+      
    end
 
    def update
@@ -25,7 +26,6 @@ class Public::CartProductsController < Public::Base
    end
 
    def create
-
       cart_product = current_customer.cart_products.find_by(product_id: params[:cart_product][:product_id])
       if cart_product.present?
          cart_product.update(quantity: cart_product.quantity + params[:cart_product][:quantity].to_i)
@@ -36,6 +36,7 @@ class Public::CartProductsController < Public::Base
          @cart_product.save
       end
       redirect_to cart_products_path
+      
    end
 
    private
