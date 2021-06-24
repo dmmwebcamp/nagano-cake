@@ -1,11 +1,13 @@
 class Public::CartProductsController < Public::Base
-  
-def index
+
+   def index
       @customer = current_customer
       @cart_products = CartProduct.all
       @numbers = (1..100).to_a
-      
+
+
    end
+
 
    def update
       @cart_product = CartProduct.find(params[:id])
@@ -36,7 +38,7 @@ def index
          @cart_product.save
       end
       redirect_to cart_products_path
-      
+
    end
 
    private
