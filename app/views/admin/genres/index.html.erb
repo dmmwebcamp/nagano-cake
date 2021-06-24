@@ -1,5 +1,7 @@
 <div class="container">
-  <h3>ジャンル一覧・追加</h3>
+    <div class="row my-3">
+      <h2>ジャンル一覧・追加</h2>
+    </div>
   <div class="row">
         <%= form_with model: @genre, url: admin_genres_path, method: :post, local: true do |f| %>
         <table>
