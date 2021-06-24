@@ -2,7 +2,7 @@ class Admin::ProductsController < Admin::Base
 
 
     def index
-        @products = Product.all
+        @products = Product.page(params[:page]).per(10)
     end
 
     def new
@@ -43,7 +43,7 @@ class Admin::ProductsController < Admin::Base
  private
     def product_params
 
-    params.require(:product).permit(:image, :name, :description, :tax_excluding_price, :genre_id, :is_saled)  
+    params.require(:product).permit(:image, :name, :description, :tax_excluding_price, :genre_id, :is_saled)
 
     end
 
