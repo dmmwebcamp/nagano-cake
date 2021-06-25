@@ -38,6 +38,15 @@ span.navbar-brand.mb-0.h1.border.border-dark {
 }
 .admin-fotter {
     font-family: 'Comic Sans MS',sans-serif;
+    width: 100%;
+  height: 200px;
+  position: absolute;
+  bottom: 0;
+  margin-bottom: -200px;/*フッターの高さと等しいネガティブマージン*/
+}
+
+.push {
+  height: 200px;/*フッターと同じ高さに指定*/
 }
 
 table {
@@ -58,6 +67,7 @@ h3 {
 }
 h2 {
      font-family: 'Tahoma',YuGothic,'Yu Gothic',sans-serif;
+      text-shadow: 4px 4px 3px rgba(217, 185, 122,.5);
 }
 h1 {
      font-family: 'Tahoma',YuGothic,'Yu Gothic',sans-serif;
@@ -67,4 +77,13 @@ h4 {
 }
 p {
     font-family: 'Tahoma',YuGothic,'Yu Gothic',sans-serif;
+}
+.cart {
+     font-family: 'Tahoma',YuGothic,'Yu Gothic',sans-serif;
+      text-shadow: 4px 4px 3px rgba(217, 185, 122,.5);
+}
+.about {
+     font-family: 'Tahoma',YuGothic,'Yu Gothic',sans-serif;
+     color: #24130d;
+     text-shadow: 4px 4px 3px rgba(236, 104, 0,.5);
 }
