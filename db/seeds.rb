@@ -19,6 +19,30 @@
       	password_confirmation: 'aaaaaa'
   )
   
+   Customer.create!(
+      	email: 'a@aa',
+      	last_name: '服部', first_name: '平次',
+      	kana_last_name: 'ハットリ', kana_first_name: 'ヘイジ',
+      	postal_code: '0000000',
+      	address: '大阪府寝屋川５丁目　和葉のの隣の家',
+      	phone_number: '09011119999',
+      	is_leaved: false,
+      	password: 'aaaaaa',
+      	password_confirmation: 'aaaaaa'
+  )
+  
+     Customer.create!(
+      	email: 'a@aaa',
+      	last_name: '服部', first_name: '平次',
+      	kana_last_name: 'ハットリ', kana_first_name: 'ヘイジ',
+      	postal_code: '0000000',
+      	address: '大阪府寝屋川５丁目　和葉のの隣の家',
+      	phone_number: '09011119999',
+      	is_leaved: false,
+      	password: 'aaaaaa',
+      	password_confirmation: 'aaaaaa'
+  )
+  
   Destination.create!(
   id: 1,
   customer_id: 1,
