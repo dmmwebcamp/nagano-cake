@@ -1,55 +1,60 @@
-<div class="container">
-  <div class="row">
-    <div class="mx-auto">
-      <div class="top">
-        <% if customer_signed_in? %>
-          <% @product.each do |product| %>
-            <%= link_to product_path(product) do %>
-              <%= attachment_image_tag product, :image, :fill, 500, 300, fallback: "no_image.jpg" %>
+<div class="container mt-3">
+  <div style="text-align:center">
+    <div class="row">
+      <div class="mx-auto">
+        <div class="top mb-3">
+          <% if customer_signed_in? %>
+            <% @product.each do |product| %>
+              <%= link_to product_path(product) do %>
+                <%= attachment_image_tag product, :image, :fill, 500, 300, fallback: "no_image.jpg" %>
+              <% end %>
             <% end %>
-          <% end %>
-        <% else %>
-          <% @product.each do |product| %>
-            <%= link_to product_path(product) do %>
-              <%= attachment_image_tag product, :image, :fill, 500, 300, fallback: "no_image.jpg" %>
+          <% else %>
+          <div class="top-example"><
+            <% @product.each do |product| %>
+              <%= link_to product_path(product) do %>
+                <%= attachment_image_tag product, :image, :fill, 500, 300, fallback: "no_image.jpg" %>
+              <% end %>
             <% end %>
-          <% end %>
-            <p class="welcome">
-              ようこそ、ながのCAKEへ！<br>
-              このサイトは、ケーキ販売のECサイトになります。<br>
-              会員でない⽅も商品の閲覧はできますが、<br>
-              購⼊には会員登録が必要になります。
-            </p>
+              <p class="welcome">
+                ようこそ、ながのCAKEへ！<br>
+                このサイトは、ケーキ販売のECサイトになります。<br>
+                会員でない⽅も商品の閲覧はできますが、<br>
+                購⼊には会員登録が必要になります。
+              </p>
           </div>
+        </div>
         <% end %>
         <h3>
-          <strong>新着商品</strong>
+          <div class="row mt-3">
+            <strong>新着商品</strong>
+          </div>
         </h3>
-        <div class="flame">
+        <div class="row">
           <% @products.each do |product| %>
-            <%= link_to product_path(product.id) do %>
-              <%= attachment_image_tag product, :image, :fill, 250, 150, fallback: "no_image.jpg" %>
-            <% end %>
-            <strong>
-              <%= link_to product.name , product_path(product.id) %>
-              ￥<%= product.add_tax_price.to_s(:delimited) %>
-            </strong>
+            <div class="col">
+              <div class="card border-light text-dark" style="width: 15rem; .border.border-top-0">
+                <%= link_to product_path(product.id) do %>
+                  <%= attachment_image_tag product, :image, :fill, 250, 150, fallback: "no_image.jpg" %>
+                <% end %>
+                <strong>
+                  <div>
+                    <%= link_to product.name , product_path(product.id) %>
+                  </div>
+                  <div>
+                    ￥<%= product.add_tax_price.to_s(:delimited) %>
+                  </div>
+                </strong>
+              </div>
+            </div>
           <% end %>
-          <%= link_to "全ての商品を見る＞", products_path %>
-<!--          <div class="image-box"></div>-->
-<!--          <div class="image-box"></div>-->
-<!--          <div class="image-box"></div>-->
-          <!--本来のリダイレクト先は商品詳細だが、エラーが出るため一覧に遷移するようにしています。-->
-<!--          <%#= link_to products_path, class:"color: #000;" do %>-->
-<!--            <strong>商品名 ¥0,000</strong>-->
-<!--          <%# end %>-->
         </div>
-<!--        <div class="flame">-->
-<!--          <strong>商品名 ¥0,000</strong>-->
-<!--          <strong>商品名 ¥0,000</strong>-->
-<!--          <strong>商品名 ¥0,000</strong>-->
-<!--        </div>-->
+        <div class="row">
+          <div style="text-align:center">
+            <%= link_to "全ての商品を見る＞", products_path %>
+          </div>
+        </div>
       </div>
-<!--    </div>-->
-<!--  </div>-->
-<!--</div>-->
+    </div>
+  </div>
+</div>
