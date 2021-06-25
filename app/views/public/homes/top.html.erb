@@ -3,11 +3,17 @@
     <div class="mx-auto">
       <div class="top">
         <% if customer_signed_in? %>
-          <%#= link_to product_path(@product) do %>
-            <%#= attachment_image_tag @product, :image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" ,size: "500x200" %>
-          <%# end %>
+          <% @product.each do |product| %>
+            <%= link_to product_path(product) do %>
+              <%= attachment_image_tag product, :image, :fill, 500, 300, fallback: "no_image.jpg" %>
+            <% end %>
+          <% end %>
         <% else %>
-          <div class="product-image-box">
+          <% @product.each do |product| %>
+            <%= link_to product_path(product) do %>
+              <%= attachment_image_tag product, :image, :fill, 500, 300, fallback: "no_image.jpg" %>
+            <% end %>
+          <% end %>
             <p class="welcome">
               ようこそ、ながのCAKEへ！<br>
               このサイトは、ケーキ販売のECサイトになります。<br>
@@ -22,11 +28,14 @@
         <div class="flame">
           <% @products.each do |product| %>
             <%= link_to product_path(product.id) do %>
-              <%= attachment_image_tag product, :image, :fill, 100, 0, fallback: "no_image.jpg"%>
+              <%= attachment_image_tag product, :image, :fill, 250, 150, fallback: "no_image.jpg" %>
             <% end %>
-            <%= link_to product.name , product_path(product.id) %>
-            <%= product.tax_excluding_price %>
+            <strong>
+              <%= link_to product.name , product_path(product.id) %>
+              ￥<%= product.add_tax_price.to_s(:delimited) %>
+            </strong>
           <% end %>
+          <%= link_to "全ての商品を見る＞", products_path %>
 <!--          <div class="image-box"></div>-->
 <!--          <div class="image-box"></div>-->
 <!--          <div class="image-box"></div>-->
@@ -34,14 +43,13 @@
 <!--          <%#= link_to products_path, class:"color: #000;" do %>-->
 <!--            <strong>商品名 ¥0,000</strong>-->
 <!--          <%# end %>-->
-<!--        </div>-->
+        </div>
 <!--        <div class="flame">-->
 <!--          <strong>商品名 ¥0,000</strong>-->
 <!--          <strong>商品名 ¥0,000</strong>-->
 <!--          <strong>商品名 ¥0,000</strong>-->
 <!--        </div>-->
-<!--        <%#= link_to "全ての商品を見る＞", products_path %>-->
-<!--      </div>-->
+      </div>
 <!--    </div>-->
 <!--  </div>-->
 <!--</div>-->
