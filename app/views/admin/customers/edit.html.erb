@@ -1,0 +1,50 @@
+<div class="container">
+  <div class="row my-3">
+    <div class="col-sm-8 px-sm-0 offset-sm-1">
+      <h2><%= @customer.last_name %><%= @customer.first_name %>さんの会員情報編集</h2>
+
+      <%= form_with model: @customer, url: admin_customer_path(@customer.id), local:true do |f| %>
+      <div class="pull-right">
+        <table class='table'>
+          <tr>
+            <th style="border:none;">会員ID</th>
+            <th style="border:none;"><%= @customer.id %></th>
+          </tr>
+          <tr>
+            <th style="border:none;">氏名</th>
+            <th style="border:none;"><%= f.text_field :last_name %><%= f.text_field :first_name %></th>
+          </tr>
+          <tr>
+            <th style="border:none;">フリガナ</th>
+            <th style="border:none;"><%= f.text_field :kana_last_name %><%= f.text_field :kana_first_name %></th>
+          </tr>
+          <tr>
+            <th style="border:none;">郵便番号</th>
+            <th style="border:none;"><%= f.text_field :postal_code %></th>
+          </tr>
+          <tr>
+            <th style="border:none;">住所</th>
+            <th style="border:none;"><%= f.text_field :address, size: 60 %></th>
+          </tr>
+          <tr>
+            <th style="border:none;">電話番号</th>
+            <th style="border:none;"><%= f.text_field :phone_number %></th>
+          </tr>
+          <tr>
+            <th style="border:none;">メールアドレス</th>
+            <th style="border:none;"><%= f.text_field :email %></th>
+          </tr>
+          <tr>
+            <th style="border:none;">会員ステータス</th>
+            <th style="border:none;">
+                <label><%= f.radio_button :is_leaved, value="false"%>有効</label>
+                <label><%= f.radio_button :is_leaved, value="true"%>退会</label>
+            </th>
+          </tr>
+          <td style="border:none;"><%= f.submit '変更を保存', class: "btn btn-sm btn-success" %></td>
+        </table>
+      <% end %>
+      </div>
+    </div>
+  </div>
+</div>

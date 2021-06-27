@@ -1,0 +1,77 @@
+<div class="container mt-3">
+ <h2>商品編集</h2>
+  <div class="row">
+    <div class="col">
+      <%= attachment_image_tag @product, :image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %>
+    </div>
+  </div>
+<%= form_with model: @product, url: admin_product_path(@product.id), method: :patch, local:true do |f| %>
+
+      <div class ="row">
+       <div class ="col">
+        <h4>商品画像</h4>
+       </div>
+       <div class ="col">
+        <%= f.attachment_field :image %>
+       </div>
+      </div>
+
+     <div class ="row">
+       <div class ="col">
+        <h4>商品名</h4>
+       </div>
+       <div class ="col">
+        <%= f.text_field :name %>
+       </div>
+    </div>
+
+    <div class ="row">
+       <div class ="col">
+        <h4>商品説明</h4>
+       </div>
+       <div class ="col">
+        <%= f.text_field :description %>
+       </div>
+    </div>
+
+    <div class ="row">
+       <div class ="col">
+        <h4>ジャンル</h4>
+       </div>
+       <div class ="col">
+        <%= f.collection_select :genre_id, Genre.all, :id, :name, include_blank: "選択して下さい" %>
+       </div>
+    </div>
+
+    <div class ="row">
+       <div class ="col">
+        <h4>税抜価格</h4>
+       </div>
+       <div class ="col">
+        <%= f.text_field :tax_excluding_price %>
+       </div>
+    </div>
+
+    <div class ="row">
+       <div class ="col">
+        <h4>販売ステータス</h4>
+       </div>
+       <div class ="col">
+        <div>
+         <%= f.radio_button :is_saled, true %>
+         <%= f.label :is_saled, '販売中', value: true %>
+         <%= f.radio_button :is_saled, false %>
+         <%= f.label :is_saled, '販売停止中', value: false %>
+       </div>
+      </div>
+   </div>
+
+   <div class ="row">
+    <div class ="col">
+     <%= f.submit "変更を保存", class:"btn btn-success" %>
+    </div>
+   </div>
+<% end %>
+   </div>
+  </div>
+ </div>
